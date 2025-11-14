@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        Listado Docente
+    </h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        {% for i in teacher %}
+        <div class="col">
+            <div class="card h-100">
+                {% if i.imagen %}
+                <img width="100" height="100" src="{{ i.imagen.url }}" class="card-img-top"
+                    alt="{{ i.nombre }} {{ i.apellido }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.nombre }} {{ i.apellido }}</h5>
+                    <p class="card-text">Correo: {{ i.correo }}</p>
+                    <p class="card-text"><small class="text-muted">Cédula: {{ i.cedula }}</small></p>
+                </div>
+                <a href="updateDocente/{{i.id}}/">Editar</a>
+                <a href="updateDocente/{{i.id}}/">Eliminar</a>
+
+            </div>
+            {% endfor %}
+
+        </div>
+</body>
+
+</html>

@@ -5,15 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit">Guardar</button>
-
-    </form>
+   <div class="d-flex justify-content-center mt-5 p-3">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 450px;">
+        <h3 class="card-title text-center mb-4"><span style="color: green;">G</span>uardar Información</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                {{ form }}
+            </div>
+            
+            <div class="d-grid gap-2">
+                            <button class="btn btn-success" type="submit">
+                                Enviar
+                            </button>
+                            <a href="/inicio" class="btn btn-danger">
+                                Cancelar
+                            </a>
+                        </div>
+        </form>
+    </div>
+</div>
 </body>
 
 </html>

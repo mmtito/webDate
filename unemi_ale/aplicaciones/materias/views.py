@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from .models import * 
 # Create your views here.
-class IndexMaterias(TemplateView):
-    template_name = "indexMateria.html"
-    
+
 class AddDateFormMateria(CreateView):
     template_name = "formMateria.html"
     model = Cursos
@@ -22,3 +20,8 @@ class UpdateMaterias(UpdateView):
     fields= "__all__"
     success_url = "/indexMateria"
     
+class DeleteMaterias(DeleteView):
+    template_name = "deleteMateria.html"
+    model = Cursos
+    success_url = "/indexMateria"
+    context_object_name = "delete"

@@ -24,3 +24,8 @@ class UpdateDocente (UpdateView):
     fields = "__all__"
     success_url = "/inicio"
     
+class DeleteDocente (DeleteView):
+    template_name = "deleteDocente.html"
+    model = Docente
+    success_url = "/inicio"
+    context_object_name = "delete"

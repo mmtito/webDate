@@ -4,28 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Listar Materias</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .card-img-right {
+            max-height: 180px; /* Altura máxima para la imagen dentro de la tarjeta */
+            width: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            border-radius: .3rem; /* Bordes redondeados sutiles */
+        }
+        .card-body-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centra verticalmente el contenido de texto */
+        }
+        /* Ajuste para el padding vertical si la imagen es mucho más pequeña que el texto */
+        .card-body.row > div {
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Listar Materias</h1>
+    <nav data-bs-theme="dark" class="navbar bg-primary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SITIO DE OFERTA DE CURSOS</a>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/inicio">Docentes</a>
+                <a class="nav-link" href="/indexMateria">Cursos</a>
+            </nav>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for i in course %}
-        <div class="col">
-            <div class="card">
-                <img src="{{i.imagen.url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{i.nombre}}</h5>
-                    <p class="card-text">{{i.jornada}} </p>
-                </div>
-                <a href="updateMateria/{{i.id}}/">Editar</a>
-                <a style="background-color: red;" href="">Eliminar</a>
-            </div>
         </div>
-        {% endfor %}
+    </nav>
+    <div class="container my-5">
+        <h3 class="mb-4 text-primary border-bottom pb-2 p-4 text-center">Listado de Materias</h3>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/formMateria" class="btn btn-success ">Agregar</a>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+            {% for i in course %}
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body row g-3 align-items-center">
+                        
+                        <div class="col-md-7 order-md-1 order-2 card-body-content">
+                            <h5 class="card-title fw-bold text-primary mb-2">{{i.nombre}}</h5>
+                            
+                            <p class="card-text mb-1">
+                                <span class=" me-2">Créditos:</span> <strong>{{i.número_créditos}}</strong>
+                            </p>
+                            <p class="card-text mb-1">
+                                <span class=" me-2">Nivel:</span> <strong class="text-info">{{i.nivel}}</strong>
+                            </p>
+                            <p class="card-text mb-1">
+                                <span class=" me-2">Horas/Semana:</span> {{i.horas_clase_semana}} h
+                            </p>
+                            <p class="card-text mb-0">
+                                <span class=" me-2">Jornada:</span> <strong class="text-success">{{i.jornada}}</strong>
+                            </p>
+                        </div>
+                        
+                        <div class="col-md-5 order-md-2 order-1 text-center">
+                            <img src="{{i.imagen.url}}" class="img-fluid card-img-right" alt="Imagen de {{i.nombre}}">
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer d-flex justify-content-center bg-light border-0 pt-3 pb-2">
+                        <a href="/updateMateria/{{i.id}}/" class="btn btn-sm btn-outline-primary w-45 me-2">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="/deleteMateria/{{i.id}}/" class="btn btn-sm btn-danger w-45">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

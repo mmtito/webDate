@@ -20,17 +20,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from aplicaciones.docente.views import *
 from aplicaciones.materias.views import *
+from aplicaciones.principal.views import HomePageView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio', ListAll.as_view()),
+    path('inicio/', ListAll.as_view()),
     path('addDateFormDocent/', AddDateFormDocent.as_view()),
-    path('formMateria', AddDateFormMateria.as_view()),
-    path('indexMateria',  ListAllMateria.as_view()),
+    path('formMateria/', AddDateFormMateria.as_view()),
+    path('indexMateria/',  ListAllMateria.as_view()),
     path('updateDocente/<pk>/',  UpdateDocente.as_view()),
     path('updateMateria/<pk>/',  UpdateMaterias.as_view()),
-    
+    path('deleteDocente/<pk>/',  DeleteDocente.as_view()),
+    path('deleteMateria/<pk>/', DeleteMaterias.as_view()), 
+    path('', HomePageView.as_view()),
 ]
 
 if settings.DEBUG:

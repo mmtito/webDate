@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,17 +8,8 @@
     <title>Listado Docente</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
 
-    <style>
-        .card-img-docente {
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-horizontal-wrapper {
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -39,7 +31,7 @@
         <h2 class="mb-4 text-center text-primary border-bottom p-4">Listado Docente</h2>
         
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-            <a href="/addDateFormDocent" class="btn btn-success ">Agregar</a>
+            <a href="/addDateFormDocent" class="btn btn-success "> <i class="bi bi-person-plus-fill"></i> Agregar</a>
         </div>
         
         <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 g-4">
